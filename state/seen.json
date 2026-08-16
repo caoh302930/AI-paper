@@ -1,4 +1,9 @@
 {
-  "videos": {},
+  "videos": {
+    "BV1ugby6jEKN": {
+      "dir": "papers/2026/08/deepseek-harness-背后的技术论文-cordis-把-agent-自进化变成搭乐高-装得上-拆得净-还有理",
+      "at": "2026-08-16T22:12:28+08:00"
+    }
+  },
   "papers": {}
 }
