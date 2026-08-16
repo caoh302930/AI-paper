@@ -1,0 +1,28 @@
+# B 站 UP 名单（后续直接追加即可）
+ups:
+  - mid: "581897590"
+    name: "Agent智能体深度研究院"
+    enabled: true
+    note: "Agent / 智能体前沿论文解读"
+
+# 标题/简介命中任一关键词才进入论文流水线（空列表 = 不过滤）
+title_keywords:
+  - 论文
+  - Paper
+  - paper
+  - arXiv
+  - arxiv
+  - Agent
+  - agent
+  - LLM
+  - 大模型
+  - 智能体
+  - RAG
+  - Transformer
+  - 多模态
+
+# 每次最多处理多少条新视频（避免一次打爆 LLM）
+max_new_videos_per_run: 5
+
+# 回看最近多少天（首次跑可调大）
+lookback_days: 14
