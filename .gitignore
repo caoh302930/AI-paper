@@ -10,3 +10,6 @@ state/seen.json.bak
 .DS_Store
 papers/**/_fulltext_cache/
 papers/**/*.pdf
+
+paper-fetch-skill/
+.venv-pf/
