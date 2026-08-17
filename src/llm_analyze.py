@@ -28,6 +28,40 @@ def _load_template_hints() -> str:
     return ""
 
 
+def generate_ideas(*, video: dict, paper: dict, parse_md: str) -> str:
+    """Second-pass divergent ideas (keeps 解析 from eating the token budget)."""
+    arxiv = paper.get("arxiv") or {}
+    paper_title = arxiv.get("title") or video.get("title") or ""
+    user = f"""基于下面论文精读笔记，写「可以做什么」发散篇（简体中文，务实具体）。
+
+论文: {paper_title}
+视频: {video.get('title')} | {video.get('url')}
+
+精读笔记（可截断）:
+{parse_md[:12000]}
+
+输出 Markdown，必须包含：
+# 可以做什么
+## 可迁移到的场景（≥4）
+## 可立刻试的小实验（≥3，含输入/步骤/期望输出）
+## 产品 / Agent 灵感
+## 跟现有系统怎么接
+## 风险与坑
+## 跟进清单
+不要重复精读正文。
+"""
+    resp = _client().chat.completions.create(
+        model=env("LLM_MODEL", "qwen3.5-397b-a17b"),
+        messages=[
+            {"role": "system", "content": "你是 AI 产品/研究顾问。输出可执行想法，少空话。"},
+            {"role": "user", "content": user},
+        ],
+        temperature=0.5,
+        max_tokens=3072,
+    )
+    return re_strip_think((resp.choices[0].message.content or "").strip())
+
+
 def generate_analysis(*, video: dict, paper: dict, fulltext: dict | None = None) -> tuple[str, str]:
     arxiv = paper.get("arxiv") or {}
     extracted = paper.get("extracted") or {}
@@ -52,7 +86,7 @@ def generate_analysis(*, video: dict, paper: dict, fulltext: dict | None = None)
     template = _load_template_hints()
     model = env("LLM_MODEL", "qwen3.5-397b-a17b")
 
-    user = f"""请对下面论文做**深度教学式精读**（参考 paper-reading skill），再单独写「可以做什么」发散篇。
+    user = f"""请对下面论文做**深度教学式精读**（参考 paper-reading skill）。本轮**只输出解析**，不要写「可以做什么」。
 
 ## 来源视频（线索，不是全文）
 - UP: {video.get('up_name')}
@@ -80,7 +114,7 @@ def generate_analysis(*, video: dict, paper: dict, fulltext: dict | None = None)
 
 ---
 
-请严格按分隔符输出两段 Markdown（不要外层代码块）：
+请严格按分隔符输出（不要外层代码块）：
 
 <<<PARSE>>>
 # 解析（深度精读）
@@ -102,23 +136,6 @@ def generate_analysis(*, video: dict, paper: dict, fulltext: dict | None = None)
 
 文末加一行：`可信度: 高/中/低（依据：全文/仅摘要/仅视频）`
 <<<END_PARSE>>>
-
-<<<IDEAS>>>
-# 可以做什么
-
-## 可迁移到的场景
-（至少 4 条，尽量落到 Agent / RAG / 训练 / 评测 / 工程）
-
-## 可立刻试的小实验
-（至少 3 条；写清输入、步骤、期望输出、一天内能否做完）
-
-## 产品 / Agent 灵感
-## 跟现有系统怎么接
-（若信息不够，给假设接口）
-
-## 风险与坑
-## 跟进清单
-<<<END_IDEAS>>>
 """
 
     resp = _client().chat.completions.create(
@@ -130,13 +147,9 @@ def generate_analysis(*, video: dict, paper: dict, fulltext: dict | None = None)
         temperature=0.35,
         max_tokens=8192,
     )
-    content = (resp.choices[0].message.content or "").strip()
-    # strip thinking tags if any
-    content = re_strip_think(content)
+    content = re_strip_think((resp.choices[0].message.content or "").strip())
     parse = _between(content, "<<<PARSE>>>", "<<<END_PARSE>>>") or content
-    ideas = _between(content, "<<<IDEAS>>>", "<<<END_IDEAS>>>") or (
-        "# 可以做什么\n\n（模型未按格式输出，请人工补全）\n"
-    )
+    ideas = generate_ideas(video=video, paper=paper, parse_md=parse)
     return parse.strip(), ideas.strip()
 
 

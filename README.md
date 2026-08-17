@@ -83,3 +83,12 @@ BILI_COOKIE=SESSDATA=...; bili_jct=...; DedeUserID=...
 Cookie 获取：浏览器登录 B 站 → F12 → Network → 任意请求 → Request Headers → Cookie。
 
 可选备用：自建 [RSSHub](https://github.com/DIYgod/RSSHub) 后设置 `RSSHUB_URL`。
+
+
+## 深度精读升级
+
+- 全文：优先 `paper-fetch` CLI（[Dictation354/paper-fetch-skill](https://github.com/Dictation354/paper-fetch-skill)；对应你提到的 paper-fetch-skill），否则 arXiv HTML/PDF
+- 解析：内嵌 [shuaiqi361/paper-reading](https://github.com/shuaiqi361/paper-reading)（LobeHub paper-reading）模板，输出教学式笔记到 `02_解析.md`
+- 发散：二次调用生成 `03_可以做什么.md`
+
+本地 skill 副本：`skills/paper-fetch/`、`skills/paper-reading/`
