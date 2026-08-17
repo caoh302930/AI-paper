@@ -22,6 +22,167 @@
       "deep": true,
       "arxiv": "2602.06448",
       "theme": "自动科研"
+    },
+    "BV1s2Mh6DEHr": {
+      "dir": "papers/2026/07/2505_24832",
+      "at": "2026-08-17T11:55:22+08:00",
+      "deep": true,
+      "arxiv": "2505.24832",
+      "theme": "LLM 安全"
+    },
+    "BV1GSTy6AEpq": {
+      "dir": "papers/2026/07/2606_17660",
+      "at": "2026-08-17T12:00:17+08:00",
+      "deep": true,
+      "arxiv": "2606.17660",
+      "theme": "训练 / 对齐 / 蒸馏"
+    },
+    "BV1UcTP6CEzo": {
+      "dir": "papers/2026/06/2602_06511",
+      "at": "2026-08-17T12:16:32+08:00",
+      "deep": true,
+      "arxiv": "2602.06511",
+      "theme": "推理 / 思维链"
+    },
+    "BV16rjh6YE2x": {
+      "dir": "papers/2026/06/2509_17995",
+      "at": "2026-08-17T12:25:35+08:00",
+      "deep": true,
+      "arxiv": "2509.17995",
+      "theme": "RAG / 检索增强"
+    },
+    "BV1DqJA6VE6c": {
+      "dir": "papers/2026/06/2605_30170",
+      "at": "2026-08-17T12:29:58+08:00",
+      "deep": true,
+      "arxiv": "2605.30170",
+      "theme": "训练 / 对齐 / 蒸馏"
+    },
+    "BV1sJEZ6nEWn": {
+      "dir": "papers/2026/06/2305_03495",
+      "at": "2026-08-17T12:39:45+08:00",
+      "deep": true,
+      "arxiv": "2305.03495",
+      "theme": "LLM 安全"
+    },
+    "BV17aE26kEte": {
+      "dir": "papers/2026/06/2502_19980",
+      "at": "2026-08-17T12:44:46+08:00",
+      "deep": true,
+      "arxiv": "2502.19980",
+      "theme": "LLM 安全"
+    },
+    "BV17w7y6aEKN": {
+      "dir": "papers/2026/06/2605_13821",
+      "at": "2026-08-17T12:55:45+08:00",
+      "deep": true,
+      "arxiv": "2605.13821",
+      "theme": "推理 / 思维链"
+    },
+    "BV1zG5F6NE5g": {
+      "dir": "papers/2026/06/2604_08618",
+      "at": "2026-08-17T13:06:58+08:00",
+      "deep": true,
+      "arxiv": "2604.08618",
+      "theme": "LLM 安全"
+    },
+    "BV1geVD6FETm": {
+      "dir": "papers/2026/06/2605_27366",
+      "at": "2026-08-17T13:12:14+08:00",
+      "deep": true,
+      "arxiv": "2605.27366",
+      "theme": "评测 / Benchmark"
+    },
+    "BV1paVJ6FEZe": {
+      "dir": "papers/2026/05/2604_15840",
+      "at": "2026-08-17T13:16:52+08:00",
+      "deep": true,
+      "arxiv": "2604.15840",
+      "theme": "训练 / 对齐 / 蒸馏"
+    },
+    "BV1NTG26MEGv": {
+      "dir": "papers/2026/05/2605_09998",
+      "at": "2026-08-17T13:21:30+08:00",
+      "deep": true,
+      "arxiv": "2605.09998",
+      "theme": "评测 / Benchmark"
+    },
+    "BV1esVN6BENH": {
+      "dir": "papers/2026/05/2601_12996",
+      "at": "2026-08-17T13:26:26+08:00",
+      "deep": true,
+      "arxiv": "2601.12996",
+      "theme": "推理 / 思维链"
+    },
+    "BV1n9Gd6oEUK": {
+      "dir": "papers/2026/05/2604_25850",
+      "at": "2026-08-17T13:31:03+08:00",
+      "deep": true,
+      "arxiv": "2604.25850",
+      "theme": "训练 / 对齐 / 蒸馏"
+    },
+    "BV1s1GH6NEKa": {
+      "dir": "papers/2026/05/2605_12039",
+      "at": "2026-08-17T13:36:27+08:00",
+      "deep": true,
+      "arxiv": "2605.12039",
+      "theme": "RAG / 检索增强"
+    },
+    "BV11vG669EyX": {
+      "dir": "papers/2026/05/2604_27660",
+      "at": "2026-08-17T13:40:50+08:00",
+      "deep": true,
+      "arxiv": "2604.27660",
+      "theme": "推理 / 思维链"
+    },
+    "BV1EnLH6AEz5": {
+      "dir": "papers/2026/05/2605_00702",
+      "at": "2026-08-17T13:50:08+08:00",
+      "deep": true,
+      "arxiv": "2605.00702",
+      "theme": "RAG / 检索增强"
+    },
+    "BV1WuLH66EHg": {
+      "dir": "papers/2026/05/2603_09250",
+      "at": "2026-08-17T13:54:48+08:00",
+      "deep": true,
+      "arxiv": "2603.09250",
+      "theme": "RAG / 检索增强"
+    },
+    "BV1T7LE6BERV": {
+      "dir": "papers/2026/05/2505_19549",
+      "at": "2026-08-17T14:00:22+08:00",
+      "deep": true,
+      "arxiv": "2505.19549",
+      "theme": "RAG / 检索增强"
+    },
+    "BV1y75J6YEeX": {
+      "dir": "papers/2026/05/2604_18375",
+      "at": "2026-08-17T14:16:24+08:00",
+      "deep": true,
+      "arxiv": "2604.18375",
+      "theme": "RAG / 检索增强"
+    },
+    "BV1qJZcBrE3p": {
+      "dir": "papers/2026/04/2604_03088",
+      "at": "2026-08-17T14:25:42+08:00",
+      "deep": true,
+      "arxiv": "2604.03088",
+      "theme": "推理 / 思维链"
+    },
+    "BV1TrAezPEvC": {
+      "dir": "papers/2026/03/2512_24601",
+      "at": "2026-08-17T14:39:32+08:00",
+      "deep": true,
+      "arxiv": "2512.24601",
+      "theme": "RAG / 检索增强"
+    },
+    "BV1PX6zBQERH": {
+      "dir": "papers/2026/01/2512_24933",
+      "at": "2026-08-17T14:51:21+08:00",
+      "deep": true,
+      "arxiv": "2512.24933",
+      "theme": "推理 / 思维链"
     }
   },
   "papers": {
@@ -41,6 +202,144 @@
       "dir": "papers/2026/07/2602_06448",
       "deep": true,
       "theme": "自动科研"
+    },
+    "2505.24832": {
+      "bvid": "BV1s2Mh6DEHr",
+      "dir": "papers/2026/07/2505_24832",
+      "deep": true,
+      "theme": "LLM 安全"
+    },
+    "2606.17660": {
+      "bvid": "BV1GSTy6AEpq",
+      "dir": "papers/2026/07/2606_17660",
+      "deep": true,
+      "theme": "训练 / 对齐 / 蒸馏"
+    },
+    "2602.06511": {
+      "bvid": "BV1UcTP6CEzo",
+      "dir": "papers/2026/06/2602_06511",
+      "deep": true,
+      "theme": "推理 / 思维链"
+    },
+    "2509.17995": {
+      "bvid": "BV16rjh6YE2x",
+      "dir": "papers/2026/06/2509_17995",
+      "deep": true,
+      "theme": "RAG / 检索增强"
+    },
+    "2605.30170": {
+      "bvid": "BV1DqJA6VE6c",
+      "dir": "papers/2026/06/2605_30170",
+      "deep": true,
+      "theme": "训练 / 对齐 / 蒸馏"
+    },
+    "2305.03495": {
+      "bvid": "BV1sJEZ6nEWn",
+      "dir": "papers/2026/06/2305_03495",
+      "deep": true,
+      "theme": "LLM 安全"
+    },
+    "2502.19980": {
+      "bvid": "BV17aE26kEte",
+      "dir": "papers/2026/06/2502_19980",
+      "deep": true,
+      "theme": "LLM 安全"
+    },
+    "2605.13821": {
+      "bvid": "BV17w7y6aEKN",
+      "dir": "papers/2026/06/2605_13821",
+      "deep": true,
+      "theme": "推理 / 思维链"
+    },
+    "2604.08618": {
+      "bvid": "BV1zG5F6NE5g",
+      "dir": "papers/2026/06/2604_08618",
+      "deep": true,
+      "theme": "LLM 安全"
+    },
+    "2605.27366": {
+      "bvid": "BV1geVD6FETm",
+      "dir": "papers/2026/06/2605_27366",
+      "deep": true,
+      "theme": "评测 / Benchmark"
+    },
+    "2604.15840": {
+      "bvid": "BV1paVJ6FEZe",
+      "dir": "papers/2026/05/2604_15840",
+      "deep": true,
+      "theme": "训练 / 对齐 / 蒸馏"
+    },
+    "2605.09998": {
+      "bvid": "BV1NTG26MEGv",
+      "dir": "papers/2026/05/2605_09998",
+      "deep": true,
+      "theme": "评测 / Benchmark"
+    },
+    "2601.12996": {
+      "bvid": "BV1esVN6BENH",
+      "dir": "papers/2026/05/2601_12996",
+      "deep": true,
+      "theme": "推理 / 思维链"
+    },
+    "2604.25850": {
+      "bvid": "BV1n9Gd6oEUK",
+      "dir": "papers/2026/05/2604_25850",
+      "deep": true,
+      "theme": "训练 / 对齐 / 蒸馏"
+    },
+    "2605.12039": {
+      "bvid": "BV1s1GH6NEKa",
+      "dir": "papers/2026/05/2605_12039",
+      "deep": true,
+      "theme": "RAG / 检索增强"
+    },
+    "2604.27660": {
+      "bvid": "BV11vG669EyX",
+      "dir": "papers/2026/05/2604_27660",
+      "deep": true,
+      "theme": "推理 / 思维链"
+    },
+    "2605.00702": {
+      "bvid": "BV1EnLH6AEz5",
+      "dir": "papers/2026/05/2605_00702",
+      "deep": true,
+      "theme": "RAG / 检索增强"
+    },
+    "2603.09250": {
+      "bvid": "BV1WuLH66EHg",
+      "dir": "papers/2026/05/2603_09250",
+      "deep": true,
+      "theme": "RAG / 检索增强"
+    },
+    "2505.19549": {
+      "bvid": "BV1T7LE6BERV",
+      "dir": "papers/2026/05/2505_19549",
+      "deep": true,
+      "theme": "RAG / 检索增强"
+    },
+    "2604.18375": {
+      "bvid": "BV1y75J6YEeX",
+      "dir": "papers/2026/05/2604_18375",
+      "deep": true,
+      "theme": "RAG / 检索增强"
+    },
+    "2604.03088": {
+      "bvid": "BV1qJZcBrE3p",
+      "dir": "papers/2026/04/2604_03088",
+      "deep": true,
+      "theme": "推理 / 思维链"
+    },
+    "2512.24601": {
+      "bvid": "BV1TrAezPEvC",
+      "dir": "papers/2026/03/2512_24601",
+      "deep": true,
+      "theme": "RAG / 检索增强"
+    },
+    "2512.24933": {
+      "bvid": "BV1PX6zBQERH",
+      "dir": "papers/2026/01/2512_24933",
+      "deep": true,
+      "theme": "推理 / 思维链"
     }
   }
 }
