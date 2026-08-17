@@ -2,14 +2,14 @@
 
 先扫本文件了解每篇在讲什么，再点进具体目录读 `02_解析.md`。
 
-- 论文数（有 arXiv）: **26**
-- 更新时间: `2026-08-17T14:57:24+08:00`
+- 论文数（有 arXiv）: **33**
+- 更新时间: `2026-08-17T19:17:29+08:00`
 
 ## 目录
 
-- [RAG / 检索增强](#RAG--检索增强)（8）
+- [RAG / 检索增强](#RAG--检索增强)（11）
 - [LLM 安全](#LLM-安全)（5）
-- [推理 / 思维链](#推理--思维链)（6）
+- [推理 / 思维链](#推理--思维链)（10）
 - [训练 / 对齐 / 蒸馏](#训练--对齐--蒸馏)（4）
 - [自动科研](#自动科研)（1）
 - [评测 / Benchmark](#评测--Benchmark)（2）
@@ -23,6 +23,30 @@
 - **视频:** [BV1GbGg67Enx](https://www.bilibili.com/video/BV1GbGg67Enx)
 - **发布:** 2026-08-01T17:09:37
 - **精读:** [papers/2026/08/2412_15529/02_解析.md](papers/2026/08/2412_15529/02_解析.md) · [可以做什么](papers/2026/08/2412_15529/03_可以做什么.md)
+
+### Agent-as-a-Router: Agentic Model Routing for Coding Tasks
+
+- **一句话:** 这篇论文提出了一种名为 **Agent-as-a-Router** 的新框架，旨在解决多模型环境下的代码任务路由问题。它不再将路由视为一次性的静态分类，而是将其构建为一个持续运行的 **Context-Action-Feedback (C-A-F)** 循环，让路由器在执行过程中不断积累“实战经验”，从而越用越准。
+- **arXiv:** [2606.22902](https://arxiv.org/abs/2606.22902)
+- **视频:** [BV1gkKa6xEna](https://www.bilibili.com/video/BV1gkKa6xEna)
+- **发布:** 2026-07-22T01:07:43
+- **精读:** [papers/2026/07/2606_22902/02_解析.md](papers/2026/07/2606_22902/02_解析.md) · [可以做什么](papers/2026/07/2606_22902/03_可以做什么.md)
+
+### SkillRAE: Agent Skill-Based Context Compilation for Retrieval-Augmented Execution
+
+- **一句话:** 这篇论文指出现有检索增强执行（RAE）系统的一个致命盲区：仅仅“检索”到相关技能是不够的，如果直接把技能原文扔给大模型，往往因为上下文冗长、缺乏任务特定的约束指引而导致执行失败。SkillRAE 提出了一种“在线编译”机制，它像一位经验丰富的老手，把检索到的技能、细粒度的子单元证据（如文件约定、约束条件）以及任务目标…
+- **arXiv:** [2605.10114](https://arxiv.org/abs/2605.10114)
+- **视频:** [BV1M9N86jEan](https://www.bilibili.com/video/BV1M9N86jEan)
+- **发布:** 2026-07-14T23:52:15
+- **精读:** [papers/2026/07/2605_10114/02_解析.md](papers/2026/07/2605_10114/02_解析.md) · [可以做什么](papers/2026/07/2605_10114/03_可以做什么.md)
+
+### EvolveR: Self-Evolving LLM Agents through an Experience-Driven Lifecycle
+
+- **一句话:** EvolveR 是一个让大语言模型智能体（LLM Agent）实现“自我进化”的框架。它不再让智能体每次任务结束后就“失忆”，而是通过一个闭环生命周期：在线交互收集轨迹 $\rightarrow$ 离线自我蒸馏提炼可复用原则 $\rightarrow$ 利用强化学习（GRPO）更新策略，从而让智能体从自己的成功与失败…
+- **arXiv:** [2510.16079](https://arxiv.org/abs/2510.16079)
+- **视频:** [BV1coTi6xEM7](https://www.bilibili.com/video/BV1coTi6xEM7)
+- **发布:** 2026-07-01T22:14:57
+- **精读:** [papers/2026/07/2510_16079/02_解析.md](papers/2026/07/2510_16079/02_解析.md) · [可以做什么](papers/2026/07/2510_16079/03_可以做什么.md)
 
 ### Variation in Verification: Understanding Verification Dynamics in Large Language Models
 
@@ -124,6 +148,30 @@
 
 ## 推理 / 思维链
 
+### SAE as a Crystal Ball: Interpretable Features Predict Cross-domain Transferability of LLMs without Training
+
+- **一句话:** 这篇论文提出了一种名为 **STS (SAE-based Transferability Score)** 的新指标，旨在**在不进行实际微调（SFT）的情况下**，预判大语言模型在特定领域微调后，其能力会如何“转移”到其他无关领域（即哪些领域会受益，哪些会受损）。核心洞察是：微调只会改变稀疏自编码器（SAE）中极少…
+- **arXiv:** [2603.02908](https://arxiv.org/abs/2603.02908)
+- **视频:** [BV1iRKG61EeH](https://www.bilibili.com/video/BV1iRKG61EeH)
+- **发布:** 2026-07-16T19:00:17
+- **精读:** [papers/2026/07/2603_02908/02_解析.md](papers/2026/07/2603_02908/02_解析.md) · [可以做什么](papers/2026/07/2603_02908/03_可以做什么.md)
+
+### Skill0.5: Joint Skill Internalization and Utilization for Out-of-Distribution Generalization in Agentic Reinforcement Learning
+
+- **一句话:** 这篇论文提出了一种名为 **Skill0.5** 的强化学习框架，旨在解决智能体（Agent）在面对未知任务（OOD）时，如何处理“技能”的难题。核心思想是**差异化对待技能**：将通用的、基础性的推理技能“内化”进模型参数中，而将随任务变化的具体执行技能保留在提示词（Prompt）中动态调用。通过一个“难度感知路由…
+- **arXiv:** [2605.28424](https://arxiv.org/abs/2605.28424)
+- **视频:** [BV18eNg6tEdm](https://www.bilibili.com/video/BV18eNg6tEdm)
+- **发布:** 2026-07-12T16:25:09
+- **精读:** [papers/2026/07/2605_28424/02_解析.md](papers/2026/07/2605_28424/02_解析.md) · [可以做什么](papers/2026/07/2605_28424/03_可以做什么.md)
+
+### AJ-Bench: Benchmarking Agent-as-a-Judge for Environment-Aware Evaluation
+
+- **一句话:** 这篇论文提出了 **AJ-Bench**，这是首个专门用于评测“裁判智能体”（Agent-as-a-Judge）的基准测试。它打破了传统裁判仅靠阅读文本进行判断的局限，要求裁判智能体必须**主动进入环境**（如搜索引擎、文件系统、图形界面），调用工具去“取证”，从而验证被评测智能体（Task-Solving Agen…
+- **arXiv:** [2604.18240](https://arxiv.org/abs/2604.18240)
+- **视频:** [BV1VmTc61EC8](https://www.bilibili.com/video/BV1VmTc61EC8)
+- **发布:** 2026-07-01T00:04:16
+- **精读:** [papers/2026/07/2604_18240/02_解析.md](papers/2026/07/2604_18240/02_解析.md) · [可以做什么](papers/2026/07/2604_18240/03_可以做什么.md)
+
 ### EvoMAS: Evolutionary Generation of Multi-Agent Systems
 
 - **一句话:** EvoMAS 提出了一种全新的范式：不再直接生成可执行代码，而是将多智能体系统（MAS）的构建转化为“结构化配置”的进化搜索问题。它利用遗传算法（选择、变异、交叉）结合执行反馈，自动进化出包含角色定义、模型分配、提示词、工具集和通信拓扑的完整系统配置，从而在推理、代码和工具调用任务上显著超越人工设计和现有自动方法。
@@ -131,6 +179,14 @@
 - **视频:** [BV1UcTP6CEzo](https://www.bilibili.com/video/BV1UcTP6CEzo)
 - **发布:** 2026-06-28T00:58:39
 - **精读:** [papers/2026/06/2602_06511/02_解析.md](papers/2026/06/2602_06511/02_解析.md) · [可以做什么](papers/2026/06/2602_06511/03_可以做什么.md)
+
+### Skill-MAS: Evolving Meta-Skill for Automatic Multi-Agent Systems
+
+- **一句话:** Skill-MAS 提出了一种全新的多智能体系统（MAS）构建范式：将“如何编排多智能体”这一高层能力抽象为一份可自动进化的**元技能（Meta-Skill）**文档。它不修改大模型参数，而是通过“多轨迹执行”收集数据，再经“选择性反思”提炼通用策略，从而让冻结的强模型在推理时也能像人类专家一样积累经验。
+- **arXiv:** [2606.18837](https://arxiv.org/abs/2606.18837)
+- **视频:** [BV16GjU6jEdP](https://www.bilibili.com/video/BV16GjU6jEdP)
+- **发布:** 2026-06-23T23:28:58
+- **精读:** [papers/2026/06/2606_18837/02_解析.md](papers/2026/06/2606_18837/02_解析.md) · [可以做什么](papers/2026/06/2606_18837/03_可以做什么.md)
 
 ### Harnessing Agentic Evolution (AEvo)
 
