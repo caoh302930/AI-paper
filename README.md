@@ -92,3 +92,19 @@ Cookie 获取：浏览器登录 B 站 → F12 → Network → 任意请求 → R
 - 发散：二次调用生成 `03_可以做什么.md`
 
 本地 skill 副本：`skills/paper-fetch/`、`skills/paper-reading/`
+
+## 主题总览 DIGEST.md
+
+按主题分组的一句话索引，日常先读这个再点进单篇精读。
+
+## 历史回填（仅 arXiv）
+
+```bash
+# 列出待处理
+./scripts/run.sh --backfill --dry-run --limit=50
+
+# 每次消化 N 篇（建议夜间跑，每篇可能 5–15 分钟）
+./scripts/run.sh --backfill --limit=3
+```
+
+日常定时任务会：扫近 14 天新视频 + 顺带消化 backlog 中的 arXiv 论文（受 `max_new_videos_per_run` 限制）。

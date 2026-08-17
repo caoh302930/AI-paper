@@ -283,3 +283,62 @@ def collect_new_videos(seen_videos: dict, cfg: dict | None = None) -> list[dict[
 
     candidates.sort(key=lambda x: x["created"], reverse=True)
     return candidates[:max_new]
+
+
+def collect_arxiv_candidates(
+    seen_papers: dict,
+    cfg: dict | None = None,
+    *,
+    lookback_days: int | None = None,
+    max_pages: int = 20,
+    limit: int | None = None,
+) -> list[dict[str, Any]]:
+    """All UP videos that contain an arXiv id and are not yet digested."""
+    from .paper_fetch import extract_from_text
+
+    cfg = cfg or load_config()
+    keywords = cfg.get("title_keywords") or []
+    if lookback_days is None:
+        lookback_days = int(cfg.get("backfill_lookback_days") or 3650)
+    cutoff = datetime.now(timezone.utc) - timedelta(days=lookback_days)
+    out: list[dict[str, Any]] = []
+
+    for up in cfg.get("ups") or []:
+        if not up.get("enabled", True):
+            continue
+        mid = str(up["mid"])
+        name = up.get("name") or mid
+        videos = fetch_user_videos_polymer(mid, max_pages=max_pages)
+        for v in videos:
+            if not v.get("created"):
+                continue
+            created = datetime.fromtimestamp(v["created"], tz=timezone.utc)
+            if created < cutoff:
+                continue
+            blob = f"{v['title']}\n{v['description']}"
+            extracted = extract_from_text(v.get("title", ""), v.get("description", ""))
+            aid = extracted.get("primary_arxiv")
+            # only hit detail API when no arxiv yet and description looks truncated
+            if not aid and len(v.get("description") or "") < 80:
+                detail = fetch_video_detail(v["bvid"])
+                if detail.get("description"):
+                    v["description"] = detail["description"]
+                if detail.get("title"):
+                    v["title"] = detail["title"]
+                v["up_name"] = detail.get("owner") or v.get("up_name") or name
+                time.sleep(0.25)
+                extracted = extract_from_text(v.get("title", ""), v.get("description", ""))
+                aid = extracted.get("primary_arxiv")
+            else:
+                v["up_name"] = v.get("up_name") or name
+
+            if not aid:
+                continue
+            if aid in seen_papers:
+                continue
+            v["arxiv_id"] = aid
+            out.append(v)
+    out.sort(key=lambda x: x["created"], reverse=True)
+    if limit is not None:
+        return out[:limit]
+    return out

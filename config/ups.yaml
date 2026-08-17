@@ -21,8 +21,15 @@ title_keywords:
   - Transformer
   - 多模态
 
-# 每次最多处理多少条新视频（避免一次打爆 LLM）
-max_new_videos_per_run: 5
+# 只处理能抽出 arXiv id 的视频
+require_arxiv: true
 
-# 回看最近多少天（首次跑可调大）
+# 每次最多处理多少篇（日常增量 + 回填各受此限制）
+max_new_videos_per_run: 3
+
+# 日常增量回看天数
 lookback_days: 14
+
+# 历史回填：扫多少页动态、回看多少年
+backfill_max_pages: 40
+backfill_lookback_days: 3650

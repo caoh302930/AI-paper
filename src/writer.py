@@ -27,6 +27,8 @@ def write_bundle(
     parse_md: str,
     ideas_md: str,
     fulltext: dict | None = None,
+    theme: str = "",
+    blurb: str = "",
 ) -> Path:
     d = paper_dir_for(video, paper)
     arxiv = paper.get("arxiv") or {}
@@ -43,6 +45,8 @@ def write_bundle(
 - arxiv: {arxiv.get('arxiv_id') or 'N/A'}
 - abs: {arxiv.get('abs_url') or 'N/A'}
 - pdf: {arxiv.get('pdf_url') or 'N/A'}
+- theme: {theme or '其他'}
+- blurb: {blurb.replace(chr(10), ' ') if blurb else ''}
 - fulltext_ok: {bool(ft.get('ok'))}
 - fulltext_source: {ft.get('source') or 'N/A'}
 - fulltext_chars: {ft.get('chars') or 0}

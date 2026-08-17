@@ -30,9 +30,17 @@ def _arxiv_html_url(arxiv_id: str) -> str:
 
 def fetch_via_paper_fetch_cli(query: str, out_dir: Path) -> dict[str, Any] | None:
     """Call `paper-fetch` CLI when available. Returns None if not installed."""
-    exe = shutil.which("paper-fetch") or shutil.which("paper_fetch")
+    from . import ROOT
+
+    candidates = [
+        env("PAPER_FETCH_BIN"),
+        str(ROOT / ".venv-pf" / "bin" / "paper-fetch"),
+        shutil.which("paper-fetch") or "",
+        shutil.which("paper_fetch") or "",
+    ]
+    exe = next((c for c in candidates if c and Path(c).exists()), "")
     if not exe:
-        # try module form
+        # try module form on current interpreter (may be 3.10 — usually fails)
         py = shutil.which("python3")
         try:
             chk = subprocess.run(
