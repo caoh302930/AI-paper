@@ -232,6 +232,13 @@
       "deep": true,
       "arxiv": "2606.18837",
       "theme": "推理 / 思维链"
+    },
+    "BV1yM3b6SEx8": {
+      "dir": "papers/2026/07/2603_03292",
+      "at": "2026-08-17T21:40:41+08:00",
+      "deep": true,
+      "arxiv": "2603.03292",
+      "theme": "RAG / 检索增强"
     }
   },
   "papers": {
@@ -431,6 +438,12 @@
       "dir": "papers/2026/06/2606_18837",
       "deep": true,
       "theme": "推理 / 思维链"
+    },
+    "2603.03292": {
+      "bvid": "BV1yM3b6SEx8",
+      "dir": "papers/2026/07/2603_03292",
+      "deep": true,
+      "theme": "RAG / 检索增强"
     }
   }
 }
