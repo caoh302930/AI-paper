@@ -21,7 +21,7 @@ def commit_and_push(summary: str) -> str:
     if env("GIT_AUTO_PUSH", "1") not in {"1", "true", "True", "yes"}:
         return "GIT_AUTO_PUSH disabled"
 
-    _run(["git", "add", "papers", "index.md", "state/seen.json", "config"])
+    _run(["git", "add", "papers", "index.md", "state/seen.json", "config", "skills", "src", "scripts", "README.md", "requirements.txt"])
     status = _run(["git", "status", "--porcelain"])
     if not status.stdout.strip():
         return "nothing to commit"

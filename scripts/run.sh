@@ -9,4 +9,4 @@ if [[ -f .venv/bin/activate ]]; then
 fi
 
 export PYTHONUNBUFFERED=1
-python scripts/run_daily.py
+python scripts/run_daily.py "$@"

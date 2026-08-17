@@ -1,21 +1,27 @@
 """Fetch recent videos from configured Bilibili UPs."""
 from __future__ import annotations
 
+import socket
 import time
 from datetime import datetime, timedelta, timezone
 from typing import Any
 
 import requests
+import urllib3.util.connection as urllib3_cn
 import yaml
 
 from . import CONFIG_DIR, env
 
+# Prefer IPv4 — IPv6 to bilibili often hangs in this environment.
+urllib3_cn.allowed_gai_family = lambda: socket.AF_INET
+
 HEADERS = {
     "User-Agent": (
-        "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
         "(KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
     ),
     "Referer": "https://www.bilibili.com",
+    "Origin": "https://www.bilibili.com",
 }
 
 
@@ -39,7 +45,7 @@ def _parse_json_or_raise(r: requests.Response, mid: str) -> dict:
     if "application/json" not in ctype and text.lstrip().startswith("<"):
         raise RuntimeError(
             f"bilibili blocked mid={mid} (got HTML/captcha). "
-            "Set BILI_COOKIE in .env (browser login cookie) or use RSSHUB_URL."
+            "Set BILI_COOKIE in .env (browser login cookie)."
         )
     try:
         return r.json()
@@ -47,14 +53,70 @@ def _parse_json_or_raise(r: requests.Response, mid: str) -> dict:
         raise RuntimeError(f"bilibili bad json mid={mid}: {e}; body={text[:200]}") from e
 
 
+def fetch_user_videos_polymer(mid: str, max_pages: int = 3) -> list[dict[str, Any]]:
+    """Space dynamics feed — works with login cookie when arc/search is rate-limited."""
+    sess = _session()
+    sess.headers["Referer"] = f"https://space.bilibili.com/{mid}"
+    out: list[dict[str, Any]] = []
+    offset = ""
+    for _ in range(max_pages):
+        params = {"host_mid": mid}
+        if offset:
+            params["offset"] = offset
+        r = sess.get(
+            "https://api.bilibili.com/x/polymer/web-dynamic/v1/feed/space",
+            params=params,
+            timeout=20,
+        )
+        r.raise_for_status()
+        data = _parse_json_or_raise(r, mid)
+        if data.get("code") != 0:
+            raise RuntimeError(f"polymer api error mid={mid}: {data}")
+        payload = data.get("data") or {}
+        items = payload.get("items") or []
+        for it in items:
+            if it.get("type") != "DYNAMIC_TYPE_AV":
+                continue
+            modules = it.get("modules") or {}
+            author = modules.get("module_author") or {}
+            dyn = modules.get("module_dynamic") or {}
+            major = dyn.get("major") or {}
+            archive = major.get("archive") or {}
+            desc_obj = dyn.get("desc") or {}
+            dyn_text = desc_obj.get("text") if isinstance(desc_obj, dict) else ""
+            bvid = archive.get("bvid") or ""
+            if not bvid:
+                continue
+            out.append(
+                {
+                    "mid": str(mid),
+                    "bvid": bvid,
+                    "aid": archive.get("aid"),
+                    "title": archive.get("title") or "",
+                    "description": (archive.get("desc") or dyn_text or "").strip(),
+                    "created": int(author.get("pub_ts") or 0),
+                    "length": archive.get("duration_text") or "",
+                    "play": None,
+                    "url": f"https://www.bilibili.com/video/{bvid}",
+                    "up_name": author.get("name") or "",
+                }
+            )
+        if not payload.get("has_more"):
+            break
+        offset = payload.get("offset") or ""
+        if not offset:
+            break
+        time.sleep(0.35)
+    return out
+
+
 def fetch_user_videos_rss(mid: str) -> list[dict[str, Any]]:
     """Fallback via RSSHub when official API is captcha-blocked."""
     base = env("RSSHUB_URL", "https://rsshub.app").rstrip("/")
     url = f"{base}/bilibili/user/video/{mid}"
     sess = _session()
-    r = sess.get(url, timeout=25)
+    r = sess.get(url, timeout=15)
     r.raise_for_status()
-    # minimal RSS parse without extra deps
     import re
     from email.utils import parsedate_to_datetime
 
@@ -72,7 +134,6 @@ def fetch_user_videos_rss(mid: str) -> list[dict[str, Any]]:
         title_s = (title.group(1) or title.group(2) if title else "") or ""
         link_s = (link.group(1) if link else "").strip()
         desc_s = (desc.group(1) or desc.group(2) if desc else "") or ""
-        # strip html tags in desc
         desc_s = re.sub(r"<[^>]+>", " ", desc_s)
         desc_s = re.sub(r"\s+", " ", desc_s).strip()
         bvid_m = re.search(r"(BV[\w]+)", link_s)
@@ -99,14 +160,23 @@ def fetch_user_videos_rss(mid: str) -> list[dict[str, Any]]:
 
 
 def fetch_user_videos(mid: str, pages: int = 2, page_size: int = 30) -> list[dict[str, Any]]:
-    """List recent videos for a mid. Official API first, RSSHub fallback."""
-    sess = _session()
-    out: list[dict[str, Any]] = []
+    """Prefer polymer dynamics (cookie); fall back to arc/search then RSSHub."""
+    errors: list[str] = []
     try:
+        vids = fetch_user_videos_polymer(mid, max_pages=max(pages, 2))
+        if vids:
+            return vids
+        errors.append("polymer returned 0 videos")
+    except Exception as e:  # noqa: BLE001
+        errors.append(f"polymer: {e}")
+
+    sess = _session()
+    try:
+        out: list[dict[str, Any]] = []
         for pn in range(1, pages + 1):
             url = "https://api.bilibili.com/x/space/arc/search"
             params = {"mid": mid, "ps": page_size, "pn": pn, "order": "pubdate"}
-            r = sess.get(url, params=params, timeout=20)
+            r = sess.get(url, params=params, timeout=15)
             r.raise_for_status()
             data = _parse_json_or_raise(r, mid)
             if data.get("code") != 0:
@@ -129,13 +199,21 @@ def fetch_user_videos(mid: str, pages: int = 2, page_size: int = 30) -> list[dic
                     }
                 )
             time.sleep(0.4)
-        return out
+        if out:
+            return out
+        errors.append("arc/search empty")
     except Exception as e:  # noqa: BLE001
-        # official API often captcha-blocks datacenter IPs
+        errors.append(f"arc/search: {e}")
+
+    try:
         rss = fetch_user_videos_rss(mid)
-        if not rss:
-            raise RuntimeError(f"official API failed ({e}); RSSHub also empty") from e
-        return rss
+        if rss:
+            return rss
+        errors.append("rss empty")
+    except Exception as e:  # noqa: BLE001
+        errors.append(f"rss: {e}")
+
+    raise RuntimeError("all bilibili fetch methods failed: " + " | ".join(errors))
 
 
 def fetch_video_detail(bvid: str) -> dict[str, Any]:
@@ -143,7 +221,7 @@ def fetch_video_detail(bvid: str) -> dict[str, Any]:
     sess = _session()
     url = "https://api.bilibili.com/x/web-interface/view"
     try:
-        r = sess.get(url, params={"bvid": bvid}, timeout=20)
+        r = sess.get(url, params={"bvid": bvid}, timeout=15)
         r.raise_for_status()
         if (r.text or "").lstrip().startswith("<"):
             return {}
@@ -186,6 +264,8 @@ def collect_new_videos(seen_videos: dict, cfg: dict | None = None) -> list[dict[
             bvid = v["bvid"]
             if not bvid or bvid in seen_videos:
                 continue
+            if not v.get("created"):
+                continue
             created = datetime.fromtimestamp(v["created"], tz=timezone.utc)
             if created < cutoff:
                 continue
@@ -197,7 +277,7 @@ def collect_new_videos(seen_videos: dict, cfg: dict | None = None) -> list[dict[
                 v["description"] = detail["description"]
             if detail.get("title"):
                 v["title"] = detail["title"]
-            v["up_name"] = detail.get("owner") or name
+            v["up_name"] = detail.get("owner") or v.get("up_name") or name
             candidates.append(v)
             time.sleep(0.3)
 

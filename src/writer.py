@@ -20,10 +20,18 @@ def paper_dir_for(video: dict, paper: dict) -> Path:
     return d
 
 
-def write_bundle(*, video: dict, paper: dict, parse_md: str, ideas_md: str) -> Path:
+def write_bundle(
+    *,
+    video: dict,
+    paper: dict,
+    parse_md: str,
+    ideas_md: str,
+    fulltext: dict | None = None,
+) -> Path:
     d = paper_dir_for(video, paper)
     arxiv = paper.get("arxiv") or {}
     extracted = paper.get("extracted") or {}
+    ft = fulltext or {}
 
     meta = f"""# Meta
 
@@ -35,11 +43,19 @@ def write_bundle(*, video: dict, paper: dict, parse_md: str, ideas_md: str) -> P
 - arxiv: {arxiv.get('arxiv_id') or 'N/A'}
 - abs: {arxiv.get('abs_url') or 'N/A'}
 - pdf: {arxiv.get('pdf_url') or 'N/A'}
+- fulltext_ok: {bool(ft.get('ok'))}
+- fulltext_source: {ft.get('source') or 'N/A'}
+- fulltext_chars: {ft.get('chars') or 0}
 """
     (d / "00_meta.md").write_text(meta, encoding="utf-8")
 
     authors = ", ".join(arxiv.get("authors") or [])
     urls = "\n".join(f"- {u}" for u in (extracted.get("urls") or [])) or "- （简介中未解析到额外链接）"
+    ft_status = (
+        f"已获取（source={ft.get('source')}, chars≈{ft.get('chars')}）"
+        if ft.get("ok")
+        else f"未获取全文：{ft.get('error') or 'unknown'}"
+    )
     original = f"""# 原文
 
 ## 视频来源
@@ -60,6 +76,7 @@ def write_bundle(*, video: dict, paper: dict, parse_md: str, ideas_md: str) -> P
 - arXiv: {arxiv.get('arxiv_id') or '未知'}
 - 摘要页: {arxiv.get('abs_url') or '无'}
 - PDF: {arxiv.get('pdf_url') or '无'}
+- 全文: {ft_status}
 
 ### Abstract
 
@@ -68,11 +85,23 @@ def write_bundle(*, video: dict, paper: dict, parse_md: str, ideas_md: str) -> P
 ### 相关链接
 
 {urls}
+
+> 全文正文见同目录 `01b_全文.md`（若存在）。
 """
     (d / "01_原文.md").write_text(original, encoding="utf-8")
-    (d / "02_解析.md").write_text(parse_md if parse_md.startswith("#") else f"# 解析\n\n{parse_md}", encoding="utf-8")
+
+    if ft.get("ok") and ft.get("markdown"):
+        (d / "01b_全文.md").write_text(
+            f"# 全文\n\n> source: `{ft.get('source')}`\n\n{ft['markdown']}\n",
+            encoding="utf-8",
+        )
+
+    (d / "02_解析.md").write_text(
+        parse_md if parse_md.lstrip().startswith("#") else f"# 解析\n\n{parse_md}",
+        encoding="utf-8",
+    )
     (d / "03_可以做什么.md").write_text(
-        ideas_md if ideas_md.startswith("#") else f"# 可以做什么\n\n{ideas_md}",
+        ideas_md if ideas_md.lstrip().startswith("#") else f"# 可以做什么\n\n{ideas_md}",
         encoding="utf-8",
     )
     return d
