@@ -8,6 +8,20 @@
       "dir": "papers/2026/08/2608_09867",
       "at": "2026-08-17T09:06:40+08:00",
       "deep": true
+    },
+    "BV1GbGg67Enx": {
+      "dir": "papers/2026/08/2412_15529",
+      "at": "2026-08-17T10:11:34+08:00",
+      "deep": true,
+      "arxiv": "2412.15529",
+      "theme": "RAG / 检索增强"
+    },
+    "BV1iMGP6qECz": {
+      "dir": "papers/2026/07/2602_06448",
+      "at": "2026-08-17T10:18:49+08:00",
+      "deep": true,
+      "arxiv": "2602.06448",
+      "theme": "自动科研"
     }
   },
   "papers": {
@@ -15,6 +29,18 @@
       "bvid": "BV1VEgj6hEiv",
       "dir": "papers/2026/08/2608_09867",
       "deep": true
+    },
+    "2412.15529": {
+      "bvid": "BV1GbGg67Enx",
+      "dir": "papers/2026/08/2412_15529",
+      "deep": true,
+      "theme": "RAG / 检索增强"
+    },
+    "2602.06448": {
+      "bvid": "BV1iMGP6qECz",
+      "dir": "papers/2026/07/2602_06448",
+      "deep": true,
+      "theme": "自动科研"
     }
   }
 }
