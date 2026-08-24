@@ -2,19 +2,27 @@
 
 先扫本文件了解每篇在讲什么，再点进具体目录读 `02_解析.md`。
 
-- 论文数（有 arXiv）: **34**
-- 更新时间: `2026-08-24T02:07:11+08:00`
+- 论文数（有 arXiv）: **37**
+- 更新时间: `2026-08-25T00:58:46+08:00`
 
 ## 目录
 
-- [RAG / 检索增强](#RAG--检索增强)（12）
-- [LLM 安全](#LLM-安全)（5）
-- [推理 / 思维链](#推理--思维链)（10）
+- [RAG / 检索增强](#RAG--检索增强)（13）
+- [LLM 安全](#LLM-安全)（6）
+- [推理 / 思维链](#推理--思维链)（11）
 - [训练 / 对齐 / 蒸馏](#训练--对齐--蒸馏)（4）
 - [自动科研](#自动科研)（1）
 - [评测 / Benchmark](#评测--Benchmark)（2）
 
 ## RAG / 检索增强
+
+### Just-In-Time Reinforcement Learning (JitRL)
+
+- **一句话:** JitRL 提出了一种**无需梯度更新**的测试时策略优化框架，让冻结权重的 LLM Agent 能通过检索历史经验记忆，实时估计动作优势并直接调整输出概率，实现“边做边学”。该方法在 WebArena 和 Jericho 等复杂任务中，不仅超越了所有免训练基线，还击败了昂贵的微调强化学习方案（如 WebRL），同时…
+- **arXiv:** [2601.18510](https://arxiv.org/abs/2601.18510)
+- **视频:** [BV1fQ8669EK5](https://www.bilibili.com/video/BV1fQ8669EK5)
+- **发布:** 2026-08-22T11:30:06
+- **精读:** [papers/2026/08/2601_18510/02_解析.md](papers/2026/08/2601_18510/02_解析.md) · [可以做什么](papers/2026/08/2601_18510/03_可以做什么.md)
 
 ### XRAG: eXamining the Core - Benchmarking Foundational Components in Advanced Retrieval-Augmented Generation
 
@@ -114,6 +122,14 @@
 
 ## LLM 安全
 
+### Cheating Automatic LLM Benchmarks: Null Models Achieve High Win Rates
+
+- **一句话:** 这篇论文揭示了一个令人不安的事实：当前主流的自动大语言模型（LLM）评测基准（如 AlpacaEval 2.0, Arena-Hard-Auto, MT-Bench）极其脆弱，甚至可以被一个**没有任何训练参数、对任何指令都只输出固定乱码的“空模型”（Null Model）**彻底攻破。研究者构造了一种结构化的作弊响…
+- **arXiv:** [2410.07137](https://arxiv.org/abs/2410.07137)
+- **视频:** [BV15Q8w63EkN](https://www.bilibili.com/video/BV15Q8w63EkN)
+- **发布:** 2026-08-21T01:05:28
+- **精读:** [papers/2026/08/2410_07137/02_解析.md](papers/2026/08/2410_07137/02_解析.md) · [可以做什么](papers/2026/08/2410_07137/03_可以做什么.md)
+
 ### Stealing Reasoning Traces from Proprietary LLM APIs
 
 - **一句话:** 这篇论文揭示了一个惊人的安全漏洞：主流大模型厂商（Anthropic, OpenAI, Google）为了保护知识产权，将模型的“思维链”（Chain-of-Thought, CoT）加密后返回给客户端。然而，由于架构设计缺陷，这些加密块在不同会话、不同用户甚至不同模型之间完全通用。攻击者只需将强模型（如 Opus）…
@@ -155,6 +171,14 @@
 - **精读:** [papers/2026/06/2604_08618/02_解析.md](papers/2026/06/2604_08618/02_解析.md) · [可以做什么](papers/2026/06/2604_08618/03_可以做什么.md)
 
 ## 推理 / 思维链
+
+### EPC-AW：多智能体动作都对，为何仍会失败？计划出了问题
+
+- **一句话:** 这篇论文指出，多智能体系统（Multi-Agent Systems）常出现一种隐蔽的失败：所有工具调用和动作执行都完美无误，但最终任务依然失败。原因在于规划者（Planner）在信息不全时**高估了自己的认知**，制定了一个看似可行、实则无法获取关键证据的计划。作者提出了 **EPC-AW**（Epistemic P…
+- **arXiv:** [2605.23414](https://arxiv.org/abs/2605.23414)
+- **视频:** [BV1nf8265EZ8](https://www.bilibili.com/video/BV1nf8265EZ8)
+- **发布:** 2026-08-22T21:52:07
+- **精读:** [papers/2026/08/2605_23414/02_解析.md](papers/2026/08/2605_23414/02_解析.md) · [可以做什么](papers/2026/08/2605_23414/03_可以做什么.md)
 
 ### SAE as a Crystal Ball: Interpretable Features Predict Cross-domain Transferability of LLMs without Training
 
