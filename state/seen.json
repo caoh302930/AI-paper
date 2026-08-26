@@ -272,6 +272,17 @@
       "deep": true,
       "arxiv": "2410.07137",
       "theme": "LLM 安全"
+    },
+    "BV1W2896iEwe": {
+      "dir": "papers/2026/08/2607_05391",
+      "at": "2026-08-27T00:15:25+08:00",
+      "deep": true,
+      "arxiv": "2607.05391",
+      "theme": "推理 / 思维链"
+    },
+    "BV1qJhj6pECA": {
+      "skipped": "no_arxiv",
+      "at": "2026-08-27T00:15:25+08:00"
     }
   },
   "papers": {
@@ -495,6 +506,12 @@
       "dir": "papers/2026/08/2410_07137",
       "deep": true,
       "theme": "LLM 安全"
+    },
+    "2607.05391": {
+      "bvid": "BV1W2896iEwe",
+      "dir": "papers/2026/08/2607_05391",
+      "deep": true,
+      "theme": "推理 / 思维链"
     }
   }
 }
