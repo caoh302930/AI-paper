@@ -283,6 +283,27 @@
     "BV1qJhj6pECA": {
       "skipped": "no_arxiv",
       "at": "2026-08-27T00:15:25+08:00"
+    },
+    "BV1Wa8o6kEVN": {
+      "dir": "papers/2026/08/2608_17271",
+      "at": "2026-08-29T00:37:42+08:00",
+      "deep": true,
+      "arxiv": "2608.17271",
+      "theme": "自动科研"
+    },
+    "BV1QBgi6EEeV": {
+      "dir": "papers/2026/07/2602_02486",
+      "at": "2026-08-29T00:55:48+08:00",
+      "deep": true,
+      "arxiv": "2602.02486",
+      "theme": "推理 / 思维链"
+    },
+    "BV1QEgx6HEyF": {
+      "dir": "papers/2026/07/2510_18297",
+      "at": "2026-08-29T01:12:27+08:00",
+      "deep": true,
+      "arxiv": "2510.18297",
+      "theme": "RAG / 检索增强"
     }
   },
   "papers": {
@@ -512,6 +533,24 @@
       "dir": "papers/2026/08/2607_05391",
       "deep": true,
       "theme": "推理 / 思维链"
+    },
+    "2608.17271": {
+      "bvid": "BV1Wa8o6kEVN",
+      "dir": "papers/2026/08/2608_17271",
+      "deep": true,
+      "theme": "自动科研"
+    },
+    "2602.02486": {
+      "bvid": "BV1QBgi6EEeV",
+      "dir": "papers/2026/07/2602_02486",
+      "deep": true,
+      "theme": "推理 / 思维链"
+    },
+    "2510.18297": {
+      "bvid": "BV1QEgx6HEyF",
+      "dir": "papers/2026/07/2510_18297",
+      "deep": true,
+      "theme": "RAG / 检索增强"
     }
   }
 }
