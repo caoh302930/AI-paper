@@ -2,14 +2,14 @@
 
 先扫本文件了解每篇在讲什么，再点进具体目录读 `02_解析.md`。
 
-- 论文数（有 arXiv）: **41**
-- 更新时间: `2026-08-29T01:12:27+08:00`
+- 论文数（有 arXiv）: **43**
+- 更新时间: `2026-09-01T01:39:57+08:00`
 
 ## 目录
 
-- [RAG / 检索增强](#RAG--检索增强)（14）
+- [RAG / 检索增强](#RAG--检索增强)（15）
 - [LLM 安全](#LLM-安全)（6）
-- [推理 / 思维链](#推理--思维链)（13）
+- [推理 / 思维链](#推理--思维链)（14）
 - [训练 / 对齐 / 蒸馏](#训练--对齐--蒸馏)（4）
 - [自动科研](#自动科研)（2）
 - [评测 / Benchmark](#评测--Benchmark)（2）
@@ -47,6 +47,14 @@
 - **视频:** [BV1QEgx6HEyF](https://www.bilibili.com/video/BV1QEgx6HEyF)
 - **发布:** 2026-07-23T23:54:53
 - **精读:** [papers/2026/07/2510_18297/02_解析.md](papers/2026/07/2510_18297/02_解析.md) · [可以做什么](papers/2026/07/2510_18297/03_可以做什么.md)
+
+### SE-GA: Memory-Augmented Self-Evolution for GUI Agents
+
+- **一句话:** 这篇论文提出了一种名为 SE-GA 的框架，旨在解决图形用户界面（GUI）智能体在长程多步任务中因上下文窗口限制和策略静态化而导致的失败问题。其核心创新在于将“测试时层级记忆检索”（TTME）与“记忆增强的自进化训练”（MASE）闭环结合，让智能体不仅能“记住”历史经验，还能通过自我复盘将非参数化的经验转化为参数化的…
+- **arXiv:** [2605.16883](https://arxiv.org/abs/2605.16883)
+- **视频:** [BV1HJKa63EMx](https://www.bilibili.com/video/BV1HJKa63EMx)
+- **发布:** 2026-07-22T19:00:16
+- **精读:** [papers/2026/07/2605_16883/02_解析.md](papers/2026/07/2605_16883/02_解析.md) · [可以做什么](papers/2026/07/2605_16883/03_可以做什么.md)
 
 ### Agent-as-a-Router: Agentic Model Routing for Coding Tasks
 
@@ -179,6 +187,14 @@
 - **精读:** [papers/2026/06/2604_08618/02_解析.md](papers/2026/06/2604_08618/02_解析.md) · [可以做什么](papers/2026/06/2604_08618/03_可以做什么.md)
 
 ## 推理 / 思维链
+
+### CacheRoute: Planned Prefix-Affinity Routing for Large-Scale LLM Serving
+
+- **一句话:** CacheRoute 解决了一个看似矛盾的问题：在大模型推理服务中，为了利用“前缀缓存（Prefix KV Cache）”加速，我们需要把相同业务前缀的请求路由到同一台机器；但为了负载均衡，我们又希望请求分散到所有机器。传统的“随机负载均衡”会打散缓存，而“固定亲和性路由”又会导致热点机器队列拥堵。CacheRout…
+- **arXiv:** [2608.19677](https://arxiv.org/abs/2608.19677)
+- **视频:** [BV1mi4y66ECi](https://www.bilibili.com/video/BV1mi4y66ECi)
+- **发布:** 2026-08-29T16:48:47
+- **精读:** [papers/2026/08/2608_19677/02_解析.md](papers/2026/08/2608_19677/02_解析.md) · [可以做什么](papers/2026/08/2608_19677/03_可以做什么.md)
 
 ### LLM-as-a-Verifier: A General-Purpose Verification Framework
 

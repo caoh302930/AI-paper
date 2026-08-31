@@ -304,6 +304,20 @@
       "deep": true,
       "arxiv": "2510.18297",
       "theme": "RAG / 检索增强"
+    },
+    "BV1mi4y66ECi": {
+      "dir": "papers/2026/08/2608_19677",
+      "at": "2026-09-01T01:24:23+08:00",
+      "deep": true,
+      "arxiv": "2608.19677",
+      "theme": "推理 / 思维链"
+    },
+    "BV1HJKa63EMx": {
+      "dir": "papers/2026/07/2605_16883",
+      "at": "2026-09-01T01:39:57+08:00",
+      "deep": true,
+      "arxiv": "2605.16883",
+      "theme": "RAG / 检索增强"
     }
   },
   "papers": {
@@ -549,6 +563,18 @@
     "2510.18297": {
       "bvid": "BV1QEgx6HEyF",
       "dir": "papers/2026/07/2510_18297",
+      "deep": true,
+      "theme": "RAG / 检索增强"
+    },
+    "2608.19677": {
+      "bvid": "BV1mi4y66ECi",
+      "dir": "papers/2026/08/2608_19677",
+      "deep": true,
+      "theme": "推理 / 思维链"
+    },
+    "2605.16883": {
+      "bvid": "BV1HJKa63EMx",
+      "dir": "papers/2026/07/2605_16883",
       "deep": true,
       "theme": "RAG / 检索增强"
     }
