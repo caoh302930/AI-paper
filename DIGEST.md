@@ -2,17 +2,17 @@
 
 先扫本文件了解每篇在讲什么，再点进具体目录读 `02_解析.md`。
 
-- 论文数（有 arXiv）: **43**
-- 更新时间: `2026-09-01T01:39:57+08:00`
+- 论文数（有 arXiv）: **46**
+- 更新时间: `2026-09-03T01:31:07+08:00`
 
 ## 目录
 
 - [RAG / 检索增强](#RAG--检索增强)（15）
 - [LLM 安全](#LLM-安全)（6）
-- [推理 / 思维链](#推理--思维链)（14）
+- [推理 / 思维链](#推理--思维链)（16）
 - [训练 / 对齐 / 蒸馏](#训练--对齐--蒸馏)（4）
 - [自动科研](#自动科研)（2）
-- [评测 / Benchmark](#评测--Benchmark)（2）
+- [评测 / Benchmark](#评测--Benchmark)（3）
 
 ## RAG / 检索增强
 
@@ -188,6 +188,22 @@
 
 ## 推理 / 思维链
 
+### SKILL.state: Scalable Long-Horizon Agent Skills
+
+- **一句话:** 这篇论文提出了一种名为 **SKILL.state** 的运行时架构，旨在解决大语言模型（LLM）智能体在执行长周期任务时，因不断追加历史对话导致上下文爆炸、推理延迟增加以及“上下文中毒”（即旧信息干扰新判断）的问题。它不再依赖不断增长的对话历史，而是维护一个显式的、结构化的**执行状态（Execution Stat…
+- **arXiv:** [2608.26263](https://arxiv.org/abs/2608.26263)
+- **视频:** [BV1cVtn6AEZ3](https://www.bilibili.com/video/BV1cVtn6AEZ3)
+- **发布:** 2026-09-02T14:47:31
+- **精读:** [papers/2026/09/2608_26263/02_解析.md](papers/2026/09/2608_26263/02_解析.md) · [可以做什么](papers/2026/09/2608_26263/03_可以做什么.md)
+
+### JIT-Agent: Scaling Harness Intelligence via Just-in-Time Harness Evolution
+
+- **一句话:** 这篇论文提出了一种名为 **JIT-Agent** 的新范式，它不再依赖人工预先设计固定的智能体框架（Harness），而是训练一个专门的“元模型”，在推理时根据具体任务**即时生成**（Just-in-Time）最适合的框架配置。该框架将智能体能力拆解为记忆、规划、动作和能力编排四个模块，通过三阶段训练（定制、修复…
+- **arXiv:** [2608.25593](https://arxiv.org/abs/2608.25593)
+- **视频:** [BV1hzt36WEgR](https://www.bilibili.com/video/BV1hzt36WEgR)
+- **发布:** 2026-09-01T16:48:30
+- **精读:** [papers/2026/09/2608_25593/02_解析.md](papers/2026/09/2608_25593/02_解析.md) · [可以做什么](papers/2026/09/2608_25593/03_可以做什么.md)
+
 ### CacheRoute: Planned Prefix-Affinity Routing for Large-Scale LLM Serving
 
 - **一句话:** CacheRoute 解决了一个看似矛盾的问题：在大模型推理服务中，为了利用“前缀缓存（Prefix KV Cache）”加速，我们需要把相同业务前缀的请求路由到同一台机器；但为了负载均衡，我们又希望请求分散到所有机器。传统的“随机负载均衡”会打散缓存，而“固定亲和性路由”又会导致热点机器队列拥堵。CacheRout…
@@ -353,6 +369,14 @@
 - **精读:** [papers/2026/07/2602_06448/02_解析.md](papers/2026/07/2602_06448/02_解析.md) · [可以做什么](papers/2026/07/2602_06448/03_可以做什么.md)
 
 ## 评测 / Benchmark
+
+### Huxley–Gödel Machine: Human-Level Coding Agent Development by an Approximation of the Optimal Self-Improving Machine
+
+- **一句话:** 这篇论文提出了一种名为 Huxley–Gödel Machine (HGM) 的自进化编码智能体框架，旨在解决现有方法仅凭当前测试分数（Benchmark Score）来指导自我修改所导致的“元生产力 - 性能错配”问题。HGM 引入了一种基于“支系（Clade）”的长期潜力指标（CMP），通过聚合后代的表现来评估当…
+- **arXiv:** [2510.21614](https://arxiv.org/abs/2510.21614)
+- **视频:** [BV1nitH6KEQh](https://www.bilibili.com/video/BV1nitH6KEQh)
+- **发布:** 2026-08-30T20:04:27
+- **精读:** [papers/2026/08/2510_21614/02_解析.md](papers/2026/08/2510_21614/02_解析.md) · [可以做什么](papers/2026/08/2510_21614/03_可以做什么.md)
 
 ### MUSE-Autoskill: Self-Evolving Agents via Skill Creation, Memory, Management, and Evaluation
 
