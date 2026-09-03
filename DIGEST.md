@@ -2,19 +2,27 @@
 
 先扫本文件了解每篇在讲什么，再点进具体目录读 `02_解析.md`。
 
-- 论文数（有 arXiv）: **46**
-- 更新时间: `2026-09-03T01:31:07+08:00`
+- 论文数（有 arXiv）: **49**
+- 更新时间: `2026-09-04T01:01:47+08:00`
 
 ## 目录
 
-- [RAG / 检索增强](#RAG--检索增强)（15）
+- [RAG / 检索增强](#RAG--检索增强)（16）
 - [LLM 安全](#LLM-安全)（6）
-- [推理 / 思维链](#推理--思维链)（16）
+- [推理 / 思维链](#推理--思维链)（17）
 - [训练 / 对齐 / 蒸馏](#训练--对齐--蒸馏)（4）
-- [自动科研](#自动科研)（2）
+- [自动科研](#自动科研)（3）
 - [评测 / Benchmark](#评测--Benchmark)（3）
 
 ## RAG / 检索增强
+
+### WikiSkill: Compiling Agent Experience into Persistent Knowledge for Skill Evolution
+
+- **一句话:** WikiSkill 提出了一种让 AI 智能体（Agent）像人类写维基百科一样积累经验的框架：它不再让技能进化仅依赖上一轮的“试错”，而是引入一个**持久化的 Wiki 层**，将每次执行中的失败模式、成功策略和历史提案整理成结构化知识，供后续的技能提案者（Skill Proposer）参考。这种方法显著提升了技能…
+- **arXiv:** [2608.27454](https://arxiv.org/abs/2608.27454)
+- **视频:** [BV1d1tJ6HEAs](https://www.bilibili.com/video/BV1d1tJ6HEAs)
+- **发布:** 2026-09-03T08:30:02
+- **精读:** [papers/2026/09/2608_27454/02_解析.md](papers/2026/09/2608_27454/02_解析.md) · [可以做什么](papers/2026/09/2608_27454/03_可以做什么.md)
 
 ### Just-In-Time Reinforcement Learning (JitRL)
 
@@ -236,6 +244,14 @@
 - **发布:** 2026-07-25T00:40:33
 - **精读:** [papers/2026/07/2602_02486/02_解析.md](papers/2026/07/2602_02486/02_解析.md) · [可以做什么](papers/2026/07/2602_02486/03_可以做什么.md)
 
+### Verbalized Sampling: How to Mitigate Mode Collapse and Unlock LLM Diversity
+
+- **一句话:** 这篇论文指出，大语言模型（LLM）在经历人类反馈强化学习（RLHF）对齐后，输出变得“无聊”且单一（模式坍塌），其根本原因并非算法缺陷，而是人类标注数据中普遍存在的**典型性偏差（Typicality Bias）**——即人类倾向于认为“熟悉、流畅、可预测”的回答更好。为此，作者提出了一种无需训练的提示策略**Ver…
+- **arXiv:** [2510.01171](https://arxiv.org/abs/2510.01171)
+- **视频:** [BV1adNo6fEcE](https://www.bilibili.com/video/BV1adNo6fEcE)
+- **发布:** 2026-07-18T00:48:55
+- **精读:** [papers/2026/07/2510_01171/02_解析.md](papers/2026/07/2510_01171/02_解析.md) · [可以做什么](papers/2026/07/2510_01171/03_可以做什么.md)
+
 ### SAE as a Crystal Ball: Interpretable Features Predict Cross-domain Transferability of LLMs without Training
 
 - **一句话:** 这篇论文提出了一种名为 **STS (SAE-based Transferability Score)** 的新指标，旨在**在不进行实际微调（SFT）的情况下**，预判大语言模型在特定领域微调后，其能力会如何“转移”到其他无关领域（即哪些领域会受益，哪些会受损）。核心洞察是：微调只会改变稀疏自编码器（SAE）中极少…
@@ -367,6 +383,14 @@
 - **视频:** [BV1iMGP6qECz](https://www.bilibili.com/video/BV1iMGP6qECz)
 - **发布:** 2026-07-31T23:30:29
 - **精读:** [papers/2026/07/2602_06448/02_解析.md](papers/2026/07/2602_06448/02_解析.md) · [可以做什么](papers/2026/07/2602_06448/03_可以做什么.md)
+
+### SciNet: Evaluating AI Agents in Relation-Aware Scientific Literature Retrieval
+
+- **一句话:** 这篇论文提出了 **SciNet**，这是首个专门用于评估科研文献检索中“关系感知能力”的大规模数据集。它指出当前的科研 Agent（如 Deep Research）虽然能基于关键词或向量相似度找到“相关”论文，却完全不懂论文之间复杂的逻辑关系（如谁颠覆了谁、谁支持了谁、技术演化的路径是什么）。通过构建包含 2.69…
+- **arXiv:** [2601.03260](https://arxiv.org/abs/2601.03260)
+- **视频:** [BV14pK663EKJ](https://www.bilibili.com/video/BV14pK663EKJ)
+- **发布:** 2026-07-19T19:00:21
+- **精读:** [papers/2026/07/2601_03260/02_解析.md](papers/2026/07/2601_03260/02_解析.md) · [可以做什么](papers/2026/07/2601_03260/03_可以做什么.md)
 
 ## 评测 / Benchmark
 
