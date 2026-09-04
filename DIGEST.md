@@ -2,14 +2,14 @@
 
 先扫本文件了解每篇在讲什么，再点进具体目录读 `02_解析.md`。
 
-- 论文数（有 arXiv）: **49**
-- 更新时间: `2026-09-04T01:01:47+08:00`
+- 论文数（有 arXiv）: **52**
+- 更新时间: `2026-09-05T01:53:06+08:00`
 
 ## 目录
 
 - [RAG / 检索增强](#RAG--检索增强)（16）
-- [LLM 安全](#LLM-安全)（6）
-- [推理 / 思维链](#推理--思维链)（17）
+- [LLM 安全](#LLM-安全)（7）
+- [推理 / 思维链](#推理--思维链)（19）
 - [训练 / 对齐 / 蒸馏](#训练--对齐--蒸馏)（4）
 - [自动科研](#自动科研)（3）
 - [评测 / Benchmark](#评测--Benchmark)（3）
@@ -146,6 +146,14 @@
 
 ## LLM 安全
 
+### TokenPilot: Cache-Efficient Context Management for LLM Agents
+
+- **一句话:** TokenPilot 是一个专为长会话 LLM Agent 设计的上下文管理框架，其核心洞察在于：单纯压缩文本（减少 Token 数量）往往会破坏 Prompt 的前缀连续性，导致后端 KV Cache 失效，反而增加了计算成本。该框架通过“全局稳定前缀”和“局部生命周期感知”双重机制，在大幅减少输入 Token 的…
+- **arXiv:** [2606.17016](https://arxiv.org/abs/2606.17016)
+- **视频:** [BV19Btf6bEUa](https://www.bilibili.com/video/BV19Btf6bEUa)
+- **发布:** 2026-09-04T08:30:02
+- **精读:** [papers/2026/09/2606_17016/02_解析.md](papers/2026/09/2606_17016/02_解析.md) · [可以做什么](papers/2026/09/2606_17016/03_可以做什么.md)
+
 ### Cheating Automatic LLM Benchmarks: Null Models Achieve High Win Rates
 
 - **一句话:** 这篇论文揭示了一个令人不安的事实：当前主流的自动大语言模型（LLM）评测基准（如 AlpacaEval 2.0, Arena-Hard-Auto, MT-Bench）极其脆弱，甚至可以被一个**没有任何训练参数、对任何指令都只输出固定乱码的“空模型”（Null Model）**彻底攻破。研究者构造了一种结构化的作弊响…
@@ -195,6 +203,14 @@
 - **精读:** [papers/2026/06/2604_08618/02_解析.md](papers/2026/06/2604_08618/02_解析.md) · [可以做什么](papers/2026/06/2604_08618/03_可以做什么.md)
 
 ## 推理 / 思维链
+
+### SMetric: Rethink LLM Scheduling for Serving Agents with Balanced Session-centric Scheduling
+
+- **一句话:** 这篇论文针对大语言模型（LLM）在"Agent 服务”场景下的调度难题，提出了一种名为 **SMetric** 的新调度策略。核心发现是：Agent 的会话（Session）具有极强的局部性，后续请求几乎总是复用同一实例上的 KV Cache，导致现有“缓存优先”策略造成严重的负载不均。SMetric 通过“首轮负载…
+- **arXiv:** [2607.08565](https://arxiv.org/abs/2607.08565)
+- **视频:** [BV1qati6NE5t](https://www.bilibili.com/video/BV1qati6NE5t)
+- **发布:** 2026-09-04T16:25:32
+- **精读:** [papers/2026/09/2607_08565/02_解析.md](papers/2026/09/2607_08565/02_解析.md) · [可以做什么](papers/2026/09/2607_08565/03_可以做什么.md)
 
 ### SKILL.state: Scalable Long-Horizon Agent Skills
 
@@ -267,6 +283,14 @@
 - **视频:** [BV18eNg6tEdm](https://www.bilibili.com/video/BV18eNg6tEdm)
 - **发布:** 2026-07-12T16:25:09
 - **精读:** [papers/2026/07/2605_28424/02_解析.md](papers/2026/07/2605_28424/02_解析.md) · [可以做什么](papers/2026/07/2605_28424/03_可以做什么.md)
+
+### Choices Speak Louder than Questions
+
+- **一句话:** 这篇论文揭示了一个反直觉的现象：大语言模型（LLM）在做选择题时，往往不是靠“读懂题目”，而是靠“猜选项”。模型可能仅仅因为某个选项的文本特征（如长度、特定词汇、句式）就选它，哪怕题目完全没看。为了解决这个问题，作者提出了**Choice Sensitivity（选项敏感度）**这一量化指标，并设计了一种新的评分方法…
+- **arXiv:** [2502.18798](https://arxiv.org/abs/2502.18798)
+- **视频:** [BV18vNH64EXu](https://www.bilibili.com/video/BV18vNH64EXu)
+- **发布:** 2026-07-11T00:23:51
+- **精读:** [papers/2026/07/2502_18798/02_解析.md](papers/2026/07/2502_18798/02_解析.md) · [可以做什么](papers/2026/07/2502_18798/03_可以做什么.md)
 
 ### AJ-Bench: Benchmarking Agent-as-a-Judge for Environment-Aware Evaluation
 

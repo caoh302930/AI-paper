@@ -360,6 +360,27 @@
       "deep": true,
       "arxiv": "2510.01171",
       "theme": "推理 / 思维链"
+    },
+    "BV1qati6NE5t": {
+      "dir": "papers/2026/09/2607_08565",
+      "at": "2026-09-05T00:28:41+08:00",
+      "deep": true,
+      "arxiv": "2607.08565",
+      "theme": "推理 / 思维链"
+    },
+    "BV19Btf6bEUa": {
+      "dir": "papers/2026/09/2606_17016",
+      "at": "2026-09-05T01:16:31+08:00",
+      "deep": true,
+      "arxiv": "2606.17016",
+      "theme": "LLM 安全"
+    },
+    "BV18vNH64EXu": {
+      "dir": "papers/2026/07/2502_18798",
+      "at": "2026-09-05T01:53:06+08:00",
+      "deep": true,
+      "arxiv": "2502.18798",
+      "theme": "推理 / 思维链"
     }
   },
   "papers": {
@@ -653,6 +674,24 @@
     "2510.01171": {
       "bvid": "BV1adNo6fEcE",
       "dir": "papers/2026/07/2510_01171",
+      "deep": true,
+      "theme": "推理 / 思维链"
+    },
+    "2607.08565": {
+      "bvid": "BV1qati6NE5t",
+      "dir": "papers/2026/09/2607_08565",
+      "deep": true,
+      "theme": "推理 / 思维链"
+    },
+    "2606.17016": {
+      "bvid": "BV19Btf6bEUa",
+      "dir": "papers/2026/09/2606_17016",
+      "deep": true,
+      "theme": "LLM 安全"
+    },
+    "2502.18798": {
+      "bvid": "BV18vNH64EXu",
+      "dir": "papers/2026/07/2502_18798",
       "deep": true,
       "theme": "推理 / 思维链"
     }
